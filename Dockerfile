@@ -32,7 +32,7 @@ COPY --from=kimchi /kimchi /usr/bin/
 COPY --from=gamja /gamja /gamja
 
 # config
-ADD Procfile /
+ADD config/Procfile /
 ADD config/kimchi /kimchi-config
 ADD config/soju /soju-config
 
