@@ -1,11 +1,11 @@
 # Soju build stage
-FROM codeberg.org/emersion/soju AS soju
+FROM codeberg.org/emersion/soju:v0.9.0 AS soju
 
 # Kimchi build stage
-FROM codeberg.org/emersion/kimchi AS kimchi
+FROM codeberg.org/emersion/kimchi:v0.1.0 AS kimchi
 
 # Gamja build stage
-FROM codeberg.org/emersion/gamja AS gamja
+FROM codeberg.org/emersion/gamja:v1.0.0-beta.11 AS gamja
 
 FROM alpine:3.22 AS overmind
 # renovate: datasource=github-releases depName=DarthSim/overmind
