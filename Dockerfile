@@ -23,18 +23,13 @@ WORKDIR /
 RUN wget "$OVERMIND_URL" && gunzip ${OVERMIND_FILE} && chmod +x "$OVERMIND" && mv ${OVERMIND} /usr/bin/overmind
 
 # soju
-# COPY --from=soju /usr/share/zoneinfo /usr/share/zoneinfo
-# COPY --from=soju /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
-# COPY --from=soju /etc/mime.types /etc/mime.types
 COPY --from=soju /soju /sojudb /sojuctl /usr/bin/
 
 # kimchi
-# COPY --from=kimchi /usr/share/zoneinfo /usr/share/zoneinfo
-# COPY --from=kimchi /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=kimchi /kimchi /usr/bin/
 
 # gamja
-COPY --from=gamja /gamja /usr/bin/
+COPY --from=gamja /gamja /gamja
 
 # config
 ADD Procfile /
