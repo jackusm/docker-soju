@@ -7,15 +7,16 @@ FROM codeberg.org/emersion/kimchi:v0.1.0 AS kimchi
 # Gamja build stage
 FROM codeberg.org/emersion/gamja:v1.0.0-beta.11 AS gamja
 
-FROM alpine:3.22 AS overmind
+FROM --platform=$BUILDPLATFORM alpine:3.22 AS overmind
 # renovate: datasource=github-releases depName=DarthSim/overmind
 ARG OVERMIND_VERSION=v2.5.1
+ARG TARGETOS
+ARG TARGETARCH
 
-ARG OVERMIND=overmind-${OVERMIND_VERSION}-linux-amd64
-
+ARG OVERMIND=overmind-${OVERMIND_VERSION}-${TARGETOS}-${TARGETARCH}
 RUN apk add --no-cache wget gzip ca-certificates tmux
 
-ENV OVERMIND_FILE=overmind-${OVERMIND_VERSION}-linux-amd64.gz
+ENV OVERMIND_FILE=${OVERMIND}.gz
 
 ENV OVERMIND_URL=https://github.com/DarthSim/overmind/releases/download/${OVERMIND_VERSION}/${OVERMIND_FILE}
 
