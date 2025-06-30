@@ -1,0 +1,5 @@
+db sqlite3 /config/soju/main.db
+message-store db
+file-upload fs /config/soju/uploads/
+listen ws+insecure://127.0.0.1:8080
+listen unix+admin://

@@ -1,0 +1,11 @@
+site http+insecure:// {
+	file_server /gamja
+}
+
+site http+insecure:///socket {
+	reverse_proxy http://127.0.0.1:8080
+}
+
+site http+insecure:///config.json {
+	file_server /gamja-config.json
+}
