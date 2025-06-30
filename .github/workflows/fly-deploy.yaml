@@ -1,8 +1,11 @@
 name: Deploy to Fly.io
 
 on:
-  registry_package:
-    types: [published]
+  workflow_run:
+    workflows: ["Build and Push Image to GHCR"]
+    types:
+      - completed
+  workflow_dispatch:
 
 jobs:
   check-fly-secret:
