@@ -1,0 +1,29 @@
+kill_signal = 'SIGINT'
+kill_timeout = '5s'
+
+[experimental]
+  auto_rollback = true
+
+[build]
+  image = 'ghcr.io/jackusm/docker-soju:latest'
+
+[[mounts]]
+  source = 'soju_data'
+  destination = '/config'
+  initial_size = '1'
+
+[[services]]
+  internal_port = 80
+  protocol = 'tcp'
+
+  [[services.ports]]
+    port = 80
+    handlers = ['http']
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ['tls']
+
+[[vm]]
+  size = 'shared-cpu-1x'
