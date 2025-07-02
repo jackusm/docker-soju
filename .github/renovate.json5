@@ -15,6 +15,9 @@
     'github>jackusm/docker-soju//.github/renovate/semanticCommits.json5',
     'helpers:pinGitHubActionDigests',
   ],
+  schedule: [
+    '* * * * *',
+  ],
   dependencyDashboard: true,
   dependencyDashboardTitle: 'Renovate Dashboard 🤖',
   suppressNotifications: [
