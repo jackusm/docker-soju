@@ -1,0 +1,41 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    'docker:enableMajor',
+    ':disableRateLimiting',
+    ':dependencyDashboard',
+    ':semanticCommits',
+    ':enablePreCommit',
+    ':automergeDigest',
+    ':automergeBranch',
+    '.github/renovate/autoMerge.json5',
+    '.github/renovate/commitMessage.json5',
+    '.github/renovate/labels.json5',
+    '.github/renovate/semanticCommits.json5',
+    'helpers:pinGitHubActionDigests',
+  ],
+  dependencyDashboard: true,
+  dependencyDashboardTitle: 'Renovate Dashboard 🤖',
+  suppressNotifications: [
+    'prIgnoreNotification',
+  ],
+  rebaseWhen: 'conflicted',
+  schedule: [
+    'on saturday',
+  ],
+  'pre-commit': {
+    enabled: true,
+  },
+  customManagers: [
+    {
+      customType: 'regex',
+      managerFilePatterns: [
+        '/^Dockerfile$/',
+      ],
+      matchStrings: [
+        'datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\sARG .*?_VERSION=(?<currentValue>v.*)\\s',
+      ],
+    },
+  ],
+}

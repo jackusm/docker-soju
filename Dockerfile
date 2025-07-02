@@ -10,6 +10,7 @@ FROM codeberg.org/emersion/gamja:v1.0.0-beta.11 AS gamja
 FROM --platform=$BUILDPLATFORM alpine:3.22 AS overmind
 # renovate: datasource=github-releases depName=DarthSim/overmind
 ARG OVERMIND_VERSION=v2.5.1
+
 ARG TARGETOS
 ARG TARGETARCH
 
