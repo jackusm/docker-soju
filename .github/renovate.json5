@@ -21,9 +21,6 @@
     'prIgnoreNotification',
   ],
   rebaseWhen: 'conflicted',
-  schedule: [
-    'on saturday',
-  ],
   'pre-commit': {
     enabled: true,
   },
