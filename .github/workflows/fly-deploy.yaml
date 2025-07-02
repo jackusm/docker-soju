@@ -1,11 +1,17 @@
 name: Deploy to Fly.io
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Build and Push Image"]
     types:
       - completed
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - fly.toml
+      - .github/workflows/fly-deploy.yaml
 
 jobs:
   check-fly-secret:
@@ -41,7 +47,7 @@ jobs:
           version: 3.27.1
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Update image
-        run: flyctl -a $FLY_APP image update -y
+        run: flyctl -a $FLY_APP deploy
         env:
           FLY_APP: ${{ secrets.FLY_APP }}
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
