@@ -1,5 +1,5 @@
 # Soju build stage
-FROM codeberg.org/emersion/soju:v0.9.0 AS soju
+FROM codeberg.org/emersion/soju:v0.10.1 AS soju
 
 # Kimchi build stage
 FROM codeberg.org/emersion/kimchi:v0.1.0 AS kimchi
