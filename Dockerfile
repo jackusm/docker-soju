@@ -7,7 +7,7 @@ FROM codeberg.org/emersion/kimchi:v0.1.0 AS kimchi
 # Gamja build stage
 FROM codeberg.org/emersion/gamja:v1.0.0-beta.11 AS gamja
 
-FROM --platform=$BUILDPLATFORM alpine:3.22 AS overmind
+FROM --platform=$BUILDPLATFORM alpine:3.23 AS overmind
 # renovate: datasource=github-releases depName=DarthSim/overmind
 ARG OVERMIND_VERSION=v2.5.1
 
