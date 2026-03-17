@@ -2,7 +2,7 @@
 FROM codeberg.org/emersion/soju:v0.10.1 AS soju
 
 # Kimchi build stage
-FROM codeberg.org/emersion/kimchi:v0.1.0 AS kimchi
+FROM codeberg.org/emersion/kimchi:v0.2.0 AS kimchi
 
 # Gamja build stage
 FROM codeberg.org/emersion/gamja:v1.0.0-beta.11 AS gamja
